@@ -1,3 +1,15 @@
+## Outcome
+
+Configuration:
+- Single receiver with a processing time of 10 ms (responds 202 after 10 ms)
+- 6 producers, each sending 100 messages/sec --> targeted total messages sent 600 messages/sec
+- Total messages sent: 1000*6 = 6000
+
+Outcome:
+- Message sending took 20 sec --> 6000/20=300 messages/sec (measured manually)
+- Received total: 6000, errors: 0, lag in latest message ms:71963
+
+
 ## Prepare
 
 Install Knative, Strimzi; create a Kafka cluster:
@@ -49,11 +61,6 @@ Start producing:
 ```
 kubectl apply -f config/07-producer.yaml
 ```
-
-## Outcome
-
-What to look for:
-- Lag reported by the receiver
 
 ## Configuration
 
