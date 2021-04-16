@@ -4,8 +4,8 @@ metadata:
   name: producer
   namespace: my-namespace
 spec:
-  parallelism: 6
-  completions: 6
+  parallelism: 3
+  completions: 3
   template:
     spec:
       containers:
@@ -15,9 +15,9 @@ spec:
           - name: BROKER_URL
             value: http://broker-ingress.knative-eventing.svc.cluster.local/my-namespace/default
           - name: MESSAGE_COUNT
-            value: '1000'
+            value: '2000'
           - name: MESSAGE_FREQUENCY
-            value: '100'
+            value: '50'
           - name: POD_NAME
             valueFrom:
               fieldRef:
