@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: producer
+  namespace: my-namespace
+spec:
+  parallelism: 10
+  completions: 10
+  template:
+    spec:
+      containers:
+      - name: producer
+        image: docker.io/aliok/knative-kafka-ch-backed-broker-load-test-producer
+        env:
+          - name: BROKER_URL
+            value: http://broker-ingress.knative-eventing.svc.cluster.local/my-namespace/default
+          - name: MESSAGE_COUNT
+            value: '10000'
+          - name: MESSAGE_FREQUENCY
+            value: '0'
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+      restartPolicy: Never

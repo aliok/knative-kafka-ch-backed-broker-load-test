@@ -1,0 +1,18 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: receiver
+  namespace: my-namespace
+spec:
+  template:
+    metadata:
+      annotations:
+        # autoscaling.knative.dev/target: "2"
+        # autoscaling.knative.dev/maxScale: "30"
+    spec:
+      containers:
+       - image: docker.io/aliok/knative-kafka-ch-backed-broker-load-test-receiver
+         env:
+         # delay before responding 202
+         - name: LATENCY
+           value: "100"
