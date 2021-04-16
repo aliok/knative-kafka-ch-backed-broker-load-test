@@ -4,8 +4,8 @@ metadata:
   name: producer
   namespace: my-namespace
 spec:
-  parallelism: 4
-  completions: 4
+  parallelism: 6
+  completions: 6
   template:
     spec:
       containers:
@@ -17,7 +17,7 @@ spec:
           - name: MESSAGE_COUNT
             value: '1000'
           - name: MESSAGE_FREQUENCY
-            value: '150'
+            value: '100'
           - name: POD_NAME
             valueFrom:
               fieldRef:
