@@ -15,4 +15,4 @@ spec:
          env:
          # delay before responding 202
          - name: LATENCY
-           value: "100"
+           value: "10"
