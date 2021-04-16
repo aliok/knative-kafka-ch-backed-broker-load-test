@@ -7,12 +7,12 @@ spec:
   template:
     metadata:
       annotations:
-        # autoscaling.knative.dev/target: "2"
-        # autoscaling.knative.dev/maxScale: "30"
+         autoscaling.knative.dev/minScale: "3"
+         autoscaling.knative.dev/maxScale: "3"
     spec:
       containers:
        - image: docker.io/aliok/knative-kafka-ch-backed-broker-load-test-receiver
          env:
          # delay before responding 202
          - name: LATENCY
-           value: "10"
+           value: "0"
